@@ -1,0 +1,23 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Highlights and Reviews</title>
+  
+  <body>
+    <div class="reviews-section">
+      <div id="reviews-container" class="reviews-container">
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('userId');
+        const projectId = urlParams.get('projectId');
+    
+        const scriptUrl = `feedback-review-prod.js?projectId=127f765b-01df-4a89-835f-7a1146e6711b&amp;userId=59fec4e9-09c1-4e8c-8ceb-b6d476ad8862`;
+    
+        const scriptTag = document.createElement('script');
+        scriptTag.src = scriptUrl;
+        scriptTag.async = true;
+        document.body.appendChild(scriptTag);
+      </script>
+  </body></html>

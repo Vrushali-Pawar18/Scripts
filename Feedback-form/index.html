@@ -9,8 +9,18 @@
   <div class="feedback-form-container">
     <form id="feedback-form"></form>
   </div>
-  <script src="https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=1766548f-3f1f-4b1d-845a-44883f9392cd&userId=758b8aab-3782-40fe-9677-a6b5a704f496" async></script>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const userId = urlParams.get('userId');
+    const projectId = urlParams.get('projectId');
+
+    const scriptUrl = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732111471/feedback-review_vk8d83.js?projectId=${projectId}&userId=${userId}`;
+
+    const scriptTag = document.createElement('script');
+    scriptTag.src = scriptUrl;
+    scriptTag.async = true;
+    document.body.appendChild(scriptTag);
+  </script>
 </body>
 </html>
-
-
