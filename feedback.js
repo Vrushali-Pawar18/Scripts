@@ -111,7 +111,6 @@ const scriptUrl = new URL(document.currentScript.src);
 const userId = scriptUrl.searchParams.get("userId");
 const projectId = scriptUrl.searchParams.get("projectId");
 const BASE_URL = "https://dev-calling-bot.setoo.ai";
-// const BASE_URL = "https://calling-bot.setoo.ai";
 
 document.head.appendChild(styleFeedback);
 
@@ -129,7 +128,6 @@ const loadScript = (src, onLoad) => {
   document.body.appendChild(script);
 };
 
-// Load intl-tel-input CSS and JS dynamically
 loadCSS(
   "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"
 );
