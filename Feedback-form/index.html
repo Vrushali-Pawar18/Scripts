@@ -14,6 +14,8 @@
     const urlParams = new URLSearchParams(window.location.search);
     const userId = urlParams.get('userId');
     const projectId = urlParams.get('projectId');
+    console.log("userId",userId);
+    console.log("projectId",projectId);
 
     const scriptUrl = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=${projectId}&userId=${userId}`;
 
