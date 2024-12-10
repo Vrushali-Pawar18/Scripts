@@ -10,29 +10,27 @@
     <form id="feedback-form"></form>
   </div>
   <script>
-    function getUrlParams(url) {
-      const params = {};
-      const queryString = url.split('?')[1];
-      if (queryString) {
-        queryString.split('&').forEach(param => {
-          const [key, value] = param.split('=');
-          params[key] = decodeURIComponent(value);
-        });
-      }
-      return params;
+    function getUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        userId: params.get('userId'),
+        projectId: params.get('projectId'),
+      };
     }
 
-    const urlParams = getUrlParams(window.location.href);
-    const userId = urlParams.userId;
-    const projectId = urlParams.projectId;
+    const { userId, projectId } = getUrlParams();
 
     console.log('UserId:', userId);
     console.log('ProjectId:', projectId);
 
-    const script = document.createElement('script');
-    script.src = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=${projectId}&userId=${userId}`;
-    script.async = true;
-    document.body.appendChild(script);
+    if (userId && projectId) {
+      const script = document.createElement('script');
+      script.src = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=8c852755-4cdc-4c4a-8bf4-e1febb86d6ff&userId=c725857c-66d9-44f7-8ef9-12eb0bf202a6`;
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      console.error('Required parameters "userId" or "projectId" are missing in the URL.');
+    }
   </script>
 </body>
 </html>
