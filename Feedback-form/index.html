@@ -9,20 +9,30 @@
   <div class="feedback-form-container">
     <form id="feedback-form"></form>
   </div>
-
   <script>
-    const urlParams = new URLSearchParams(window.location.search);
-    const userId = urlParams.get('userId');
-    const projectId = urlParams.get('projectId');
-    console.log("userId",userId);
-    console.log("projectId",projectId);
+    function getUrlParams(url) {
+      const params = {};
+      const queryString = url.split('?')[1];
+      if (queryString) {
+        queryString.split('&').forEach(param => {
+          const [key, value] = param.split('=');
+          params[key] = decodeURIComponent(value);
+        });
+      }
+      return params;
+    }
 
-    const scriptUrl = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=${projectId}&userId=${userId}`;
+    const urlParams = getUrlParams(window.location.href);
+    const userId = urlParams.userId;
+    const projectId = urlParams.projectId;
 
-    const scriptTag = document.createElement('script');
-    scriptTag.src = scriptUrl;
-    scriptTag.async = true;
-    document.body.appendChild(scriptTag);
+    console.log('UserId:', userId);
+    console.log('ProjectId:', projectId);
+
+    const script = document.createElement('script');
+    script.src = `https://res.cloudinary.com/di2eukaqk/raw/upload/v1732051948/feedback-form_x116ps.js?projectId=${projectId}&userId=${userId}`;
+    script.async = true;
+    document.body.appendChild(script);
   </script>
 </body>
 </html>
